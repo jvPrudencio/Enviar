@@ -2,6 +2,22 @@
 <html lang="en">
 
 <head>
+    <?php 
+        session_start();//Inicia uma nova sessão ou resume uma sessão existente
+        include'conexaoBanco.php';
+
+
+        if((!isset ($_SESSION['email']) == true) and (!isset ($_SESSION['senha']) == true))
+        {
+            session_unset();//remove todas as variáveis de sessão
+                        echo "<script>
+                alert('Esta página só pode ser acessada por usuário logado');
+                window.location.href = 'fomularioLogin.php';
+                </script>";
+
+        }
+        $logado = $_SESSION['email'];
+        ?>
     
     <!-- Adicionando Javascript -->
     <script type="text/javascript" >
